@@ -1,0 +1,53 @@
+{
+  "name":        "chaoticwave/grubworm",
+  "description": "Laravel Data Burrower",
+  "keywords":    [
+    "generator",
+    "reverse-engineer",
+    "database",
+    "laravel",
+    "cli",
+    "command"
+  ],
+  "license":     "MIT",
+  "type":        "library",
+  "extra":       {
+    "branch-alias": {
+      "dev-develop": "1.x-dev"
+    }
+  },
+  "require":     {
+    "dreamfactory/php-utils": "1.*@dev"
+  },
+  "require-dev": {
+    "laravel/framework":           "5.1.*",
+    "barryvdh/laravel-ide-helper": "~2.0",
+    "doctrine/dbal":               "~2.3",
+    "way/generators":              "~3.0",
+    "phpunit/phpunit":             "~4.0",
+    "phpspec/phpspec":             "~2.1"
+  },
+  "autoload":    {
+    "psr-4": {
+      "ChaoticWave\\Utility\\Grubworm\\": "src/"
+    }
+  },
+  "scripts":     {
+    "post-install-cmd": [
+      "php artisan clear-compiled",
+      "php artisan vendor:publish",
+      "php artisan optimize"
+    ],
+    "post-update-cmd":  [
+      "php artisan cache:clear",
+      "php artisan config:clear",
+      "php artisan route:clear",
+      "php artisan clear-compiled",
+      "php artisan vendor:publish --tag=config --force",
+      "php artisan optimize"
+    ]
+  },
+  "config":      {
+    "preferred-install": "dist"
+  }
+}
