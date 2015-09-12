@@ -32,21 +32,6 @@
       "ChaoticWave\\Utility\\Grubworm\\": "src/"
     }
   },
-  "scripts":     {
-    "post-install-cmd": [
-      "php artisan clear-compiled",
-      "php artisan vendor:publish",
-      "php artisan optimize"
-    ],
-    "post-update-cmd":  [
-      "php artisan cache:clear",
-      "php artisan config:clear",
-      "php artisan route:clear",
-      "php artisan clear-compiled",
-      "php artisan vendor:publish --tag=config --force",
-      "php artisan optimize"
-    ]
-  },
   "config":      {
     "preferred-install": "dist"
   }
