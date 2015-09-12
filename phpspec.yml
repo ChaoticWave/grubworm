@@ -1,5 +1,5 @@
 suites:
     main:
-        namespace: DreamFactory\\Laravel\\Grubworm
-        psr4_prefix: DreamFactory\\Laravel\\Grubworm
-        src_path: app
+        namespace: ChaoticWave\\Utility\\Grubworm
+        psr4_prefix: ChaoticWave\\Utility\\Grubworm
+        src_path: src
