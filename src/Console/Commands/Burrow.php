@@ -1,4 +1,4 @@
-<?php namespace DreamFactory\Laravel\Grubworm\Console\Commands;
+<?php namespace ChaoticWave\Utility\Grubworm\Console\Commands;
 
 use Doctrine\DBAL\Schema\Table;
 use DreamFactory\Library\Utility\Disk;
