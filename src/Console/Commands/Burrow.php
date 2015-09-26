@@ -8,28 +8,11 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-/**
+/**r
  * Burrows into a database to discover all the goodies within
  */
 class Burrow extends Command implements SelfHandling
 {
-    //******************************************************************************
-    //* Constants
-    //******************************************************************************
-
-    /**
-     * @type string
-     */
-    const VERSION = '1.x-dev';
-    /**
-     * @type string
-     */
-    const VERSION_DATE = '2015-08-10';
-    /**
-     * @type string Default output path of this command relative to base path
-     */
-    const DEFAULT_OUTPUT_PATH = 'database/grubworm';
-
     //******************************************************************************
     //* Members
     //******************************************************************************
@@ -50,22 +33,6 @@ class Burrow extends Command implements SelfHandling
     //******************************************************************************
     //* Methods
     //******************************************************************************
-
-    /**
-     * Echo's the intro header
-     */
-    protected function _intro()
-    {
-        $_version = static::VERSION . ' (' . static::VERSION_DATE . ')';
-        (($_year = date('Y')) > 2015) && $_year = '2015-' . $_year;
-
-        $_intro = <<<TEXT
-Grubworm: Data Burrower {$_version}
-
-TEXT;
-
-        $this->_writeln($_intro);
-    }
 
     /**
      * Handle the command
@@ -275,6 +242,7 @@ TEXT;
                 'o',
                 InputOption::VALUE_OPTIONAL,
                 'The path to write output, relative to <comment>' . base_path() . '</comment>.',
+                config('grubworm.default-output-path'),
             ],
             ['namespace', 's', InputOption::VALUE_OPTIONAL, 'The namespace of the created classes.', 'App\\Models'],
         ];
@@ -297,25 +265,38 @@ TEXT;
      */
     protected function initialize()
     {
-        $this->_intro();
+        $this->intro();
 
-        if (null === ($_path = $this->option('output-path'))) {
-            $_path = static::DEFAULT_OUTPUT_PATH;
+        if (empty($_path = $this->option('output-path'))) {
+            $this->error('No output path specified.');
+
+            return false;
         }
 
-        $_path = rtrim(base_path() . DIRECTORY_SEPARATOR . ltrim($_path, DIRECTORY_SEPARATOR), DIRECTORY_SEPARATOR);
-
-        if (!Disk::ensurePath($_path)) {
-            $this->_writeln('<error>error</error>: cannot write to output path <comment>' . $_path . '</comment>.');
+        try {
+            $_path = Disk::path([base_path(), $_path], true);
+        } catch (\Exception $_ex) {
+            $this->error('Unable to write to output path "' . $_path . '"');
 
             return false;
         }
 
         $this->destination = $_path;
-        $this->_vv('* output path set to <comment>' . $this->destination . '</comment>');
         $this->database = $this->argument('database');
-        $this->_v('* using <info>' . $this->database . '</info> database');
 
         return true;
+    }
+
+    /**
+     * Echo's the intro header
+     */
+    protected function intro()
+    {
+        $_intro =
+            'Grubworm: Data Burrower ' . config('grubworm.version') . ' (' . config('grubworm.version-date') . ')';
+
+        (($_year = date('Y')) > 2015) && $_year = '2015-' . $_year;
+
+        $this->_writeln($_intro . PHP_EOL);
     }
 }
