@@ -5,6 +5,7 @@ use DreamFactory\Library\Utility\Disk;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Bus\SelfHandling;
 use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -260,11 +261,11 @@ TEXT;
         return array_merge(parent::getArguments(), $_arguments);
     }
 
-    /**
-     * @return bool
-     */
-    protected function initialize()
+    /** @inheritdoc */
+    protected function initialize(InputInterface $input, OutputInterface $output)
     {
+        parent::initialize($input, $output);
+
         $this->intro();
 
         if (empty($_path = $this->option('output-path'))) {
