@@ -1,0 +1,5 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="grubworm (cli)" type="PhpLocalRunConfigurationType" factoryName="PHP Console" singleton="true" path="$PROJECT_DIR$/artisan" scriptParameters="grubworm:burrow &quot;dfe-local&quot;">
+    <method />
+  </configuration>
+</component>
