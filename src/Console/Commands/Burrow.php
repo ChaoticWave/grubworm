@@ -42,10 +42,6 @@ class Burrow extends Command implements SelfHandling
      */
     public function fire()
     {
-        if (!$this->initialize()) {
-            return false;
-        }
-
         try {
             $_db = \DB::connection($this->database);
         } catch (\Exception $_ex) {
