@@ -96,7 +96,7 @@ class Burrow extends Command implements SelfHandling
         try {
             foreach ($table->getColumns() as $_column) {
                 $_type = $_column->getType()->getName();
-                $_type = $_type == 'datetime' ? 'Carbon' : $_type;
+                ($_type == 'datetime') && $_type = 'Carbon';
                 $_props[] = ' * @property ' . $_type . ' $' . $_column->getName();
             }
 
@@ -279,7 +279,10 @@ TEXT;
         }
 
         $this->destination = $_path;
-        $this->database = $this->argument('database');
+
+        if ('default' == ($this->database = $this->argument('database'))) {
+            $this->database = config('database.default');
+        }
 
         return true;
     }
