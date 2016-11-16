@@ -20,13 +20,13 @@
   "minimum-stability": "dev",
   "require":           {
     "php":                     ">=5.5.9",
+    "doctrine/dbal":           "~2.3",
     "chaoticwave/blue-velvet": "1.0.*"
   },
   "require-dev":       {
     "fzaninotto/faker":            "~1.4",
     "phpunit/phpunit":             "~4.0",
     "barryvdh/laravel-ide-helper": "~2.0",
-    "doctrine/dbal":               "~2.3",
     "way/generators":              "~3.0",
     "phpspec/phpspec":             "~2.1"
   },

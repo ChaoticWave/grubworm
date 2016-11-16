@@ -2,6 +2,7 @@
 
 use ChaoticWave\BlueVelvet\Utility\Disk;
 use Doctrine\DBAL\Schema\Table;
+use Illuminate\Database\Connection;
 use Illuminate\Database\Console\Migrations\BaseCommand;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\Console\Input\InputArgument;
@@ -43,6 +44,8 @@ class Burrow extends BaseCommand
     public function fire()
     {
         try {
+            /** @var Connection $_db */
+            /** @noinspection PhpUndefinedMethodInspection */
             $_db = DB::connection($this->database);
         } catch (\Exception $_ex) {
             throw new \InvalidArgumentException('The database "' . $this->database . '" is invalid.');
