@@ -1,8 +1,9 @@
 <?php namespace ChaoticWave\Utility\Grubworm\Console\Commands;
 
+use ChaoticWave\BlueVelvet\Utility\Disk;
 use Doctrine\DBAL\Schema\Table;
-use DreamFactory\Library\Utility\Disk;
 use Illuminate\Database\Console\Migrations\BaseCommand;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
