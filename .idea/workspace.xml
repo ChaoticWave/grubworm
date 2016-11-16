@@ -25,16 +25,7 @@
     <option name="FILTER_BY_CURRENT_PROJECT" value="true" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e63b1474-3f23-4028-a221-38572e74e05c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/blade.xml" afterPath="$PROJECT_DIR$/.idea/blade.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/grubworm.iml" afterPath="$PROJECT_DIR$/.idea/grubworm.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.json" afterPath="$PROJECT_DIR$/composer.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Console/Commands/Burrow.php" afterPath="$PROJECT_DIR$/src/Console/Commands/Burrow.php" />
-    </list>
+    <list default="true" id="e63b1474-3f23-4028-a221-38572e74e05c" name="Default" comment="" />
     <ignored path="grubworm.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -311,12 +302,12 @@
       <option name="presentableId" value="Default" />
       <updated>1431731574550</updated>
       <workItem from="1464814515993" duration="591000" />
-      <workItem from="1479317165148" duration="225000" />
+      <workItem from="1479317165148" duration="594000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="816000" />
+    <option name="totallyTimeSpent" value="1185000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1600" height="875" extended-state="6" />
