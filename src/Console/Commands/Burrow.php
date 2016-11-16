@@ -2,8 +2,7 @@
 
 use Doctrine\DBAL\Schema\Table;
 use DreamFactory\Library\Utility\Disk;
-use Illuminate\Console\Command;
-use Illuminate\Contracts\Bus\SelfHandling;
+use Illuminate\Database\Console\Migrations\BaseCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -12,7 +11,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**r
  * Burrows into a database to discover all the goodies within
  */
-class Burrow extends Command implements SelfHandling
+class Burrow extends BaseCommand
 {
     //******************************************************************************
     //* Members
@@ -43,7 +42,7 @@ class Burrow extends Command implements SelfHandling
     public function fire()
     {
         try {
-            $_db = \DB::connection($this->database);
+            $_db = DB::connection($this->database);
         } catch (\Exception $_ex) {
             throw new \InvalidArgumentException('The database "' . $this->database . '" is invalid.');
         }
