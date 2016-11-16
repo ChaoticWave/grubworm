@@ -1,9 +1,10 @@
 <?php namespace ChaoticWave\Utility\Grubworm\Console\Commands;
 
+use ChaoticWave\BlueVelvet\Utility\Disk;
 use Doctrine\DBAL\Schema\Table;
-use DreamFactory\Library\Utility\Disk;
-use Illuminate\Console\Command;
-use Illuminate\Contracts\Bus\SelfHandling;
+use Illuminate\Database\Connection;
+use Illuminate\Database\Console\Migrations\BaseCommand;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -12,7 +13,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**r
  * Burrows into a database to discover all the goodies within
  */
-class Burrow extends Command implements SelfHandling
+class Burrow extends BaseCommand
 {
     //******************************************************************************
     //* Members
@@ -43,7 +44,9 @@ class Burrow extends Command implements SelfHandling
     public function fire()
     {
         try {
-            $_db = \DB::connection($this->database);
+            /** @var Connection $_db */
+            /** @noinspection PhpUndefinedMethodInspection */
+            $_db = DB::connection($this->database);
         } catch (\Exception $_ex) {
             throw new \InvalidArgumentException('The database "' . $this->database . '" is invalid.');
         }
@@ -86,6 +89,7 @@ class Burrow extends Command implements SelfHandling
      * @param \Doctrine\DBAL\Schema\Table $table
      *
      * @return bool|int
+     * @todo convert to Blade stub
      */
     protected function _generateModel(Table $table)
     {
@@ -265,9 +269,7 @@ TEXT;
         $this->intro();
 
         if (empty($_path = $this->option('output-path'))) {
-            $this->error('No output path specified.');
-
-            return false;
+            $_path = 'database';
         }
 
         try {
