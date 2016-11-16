@@ -89,6 +89,7 @@ class Burrow extends BaseCommand
      * @param \Doctrine\DBAL\Schema\Table $table
      *
      * @return bool|int
+     * @todo convert to Blade stub
      */
     protected function _generateModel(Table $table)
     {
@@ -268,9 +269,7 @@ TEXT;
         $this->intro();
 
         if (empty($_path = $this->option('output-path'))) {
-            $this->error('No output path specified.');
-
-            return false;
+            $_path = 'database';
         }
 
         try {
